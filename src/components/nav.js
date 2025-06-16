@@ -11,16 +11,15 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   padding: 20px 0;
-  background-color: #fff; /* 필요 시 배경 추가 */
 `;
 
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 1150px;         // MainCard와 동일하게
-  margin: 0 auto;        // 중앙 정렬
-  margin-bottom: 40px;   // MainCard와의 간격(원하는 값으로 조절)
+  width: 1150px;  
+  margin: 0 auto; 
+  margin-bottom: 40px;
 `;
 
 const Logo = styled.h1`
