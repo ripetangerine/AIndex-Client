@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const StarsButtonIcon = ({ filled }) => {
-  const fillColor = filled ? '#7C3AED' : '#FFFFFF';
+  const fillColor = filled ? '#7C3AED' : '#BDBDBD';
 
   return (
     <svg

@@ -122,8 +122,6 @@ function Home() {
 
   const handleFixedButtonClick = (aiName) => {
     console.log(`Navigating to ${aiName} page.`);
-    // Here you would typically use react-router-dom's history.push or similar
-    // to navigate to the specific AI's page, e.g., history.push(`/ai/${aiName}`);
   };
 
   return (

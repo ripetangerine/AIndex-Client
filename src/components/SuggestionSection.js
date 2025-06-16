@@ -67,7 +67,7 @@ const SuggestionCard = styled.div`
 
 const CardImageSection = styled.div`
   height: 120px;
-  background: #BDBDBD;
+  background:rgb(0, 0, 0);
   display: flex;
   align-items: center;
   justify-content: center;
