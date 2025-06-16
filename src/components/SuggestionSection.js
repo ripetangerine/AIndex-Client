@@ -30,8 +30,8 @@ const FilterTabs = styled.div`
 `;
 
 const FilterTab = styled.button`
-  background: ${props => props.active ? '#EDEBFD' : '#EEEEEE'};
-  color: ${props => props.active ? '#424242' : '#9E9E9E'};
+  background: ${props => props.$active ? '#EDEBFD' : '#EEEEEE'};
+  color: ${props => props.$active ? '#424242' : '#9E9E9E'};
   font-size: 15px;
   border: none;
   border-radius: 12px;
@@ -149,19 +149,19 @@ function SuggestionSection({ activeFilter, setActiveFilter, suggestions, starred
         </SectionTitle>
         <FilterTabs>
           <FilterTab 
-            active={activeFilter === 'chat'}
             onClick={() => setActiveFilter('chat')}
+            $active={activeFilter === 'chat'}
           >
             chat
           </FilterTab>
           <FilterTab 
-            active={activeFilter === 'generate'}
+            $active={activeFilter === 'generate'}
             onClick={() => setActiveFilter('generate')}
           >
             generate
           </FilterTab>
           <FilterTab 
-            active={activeFilter === 'productivity'}
+            $active={activeFilter === 'productivity'}
             onClick={() => setActiveFilter('productivity')}
           >
             productivity
@@ -173,7 +173,7 @@ function SuggestionSection({ activeFilter, setActiveFilter, suggestions, starred
           <SuggestionCard key={item.id}>
             <CardImageSection>
               <StarButton
-                isStarred={starredItems.has(item.id)}
+                $isStarred={starredItems.has(item.id)}
                 onClick={e => {
                   e.stopPropagation();
                   toggleStar(item.id);

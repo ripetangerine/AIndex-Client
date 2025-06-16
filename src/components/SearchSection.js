@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import SearchButtonIcon from '../assets/icon/search_button.svg';
 
 const SearchSectionWrapper = styled.div`
@@ -56,6 +57,11 @@ const SearchButton = styled.button`
   border: none;
   color: #6b7280;
   cursor: pointer;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #7c3aed;
+  }
 `;
 
 const TagList = styled.div`
@@ -90,6 +96,36 @@ const Tag = styled.span`
 `;
 
 function SearchSection({ searchQuery, setSearchQuery, tags }) {
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (searchQuery.trim()) {
+      // 검색어가 있으면 검색 페이지로 이동
+      navigate(`/search?query=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  const handleTagClick = (tag) => {
+    const cleanTag = tag.replace('# ', '');
+    // 검색어 설정과 네비게이션을 동시에 처리
+    setSearchQuery(cleanTag);
+    
+    // 현재 경로가 /search인지 확인
+    if (window.location.pathname === '/search') {
+      // 이미 검색 페이지에 있다면 URL만 업데이트
+      navigate(`/search?query=${encodeURIComponent(cleanTag)}`, { replace: true });
+    } else {
+      // 다른 페이지에서 검색 페이지로 이동
+      navigate(`/search?query=${encodeURIComponent(cleanTag)}`);
+    }
+  };
+
   return (
     <SearchSectionWrapper>
       <SearchTitle>
@@ -101,16 +137,17 @@ function SearchSection({ searchQuery, setSearchQuery, tags }) {
           placeholder="AI, category, info..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
+          onKeyPress={handleKeyPress}
         />
-        <SearchButton>
+        <SearchButton onClick={handleSearch}>
           <img src={SearchButtonIcon} alt="검색" width={22} />
         </SearchButton>
       </SearchContainer>
       <TagList>
-        {tags.map((tag) => (
+        {tags.map((tag, index) => (
           <Tag
-            key={tag}
-            onClick={() => setSearchQuery(tag.replace('# ', ''))}
+            key={index}
+            onClick={() => handleTagClick(tag)}
           >
             {tag}
           </Tag>

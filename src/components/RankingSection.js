@@ -37,16 +37,16 @@ const RankingTabs = styled.div`
 `;
 
 const RankingTab = styled.button`
-  background: ${props => props.active ? '#ffffff' : 'transparent'};
+  background: ${props => props.$active ? '#ffffff' : 'transparent'};
   border: none;
   font-size: 1rem;
-  color: ${props => props.active ? '#1f2937' : '#6b7280'};
+  color: ${props => props.$active ? '#1f2937' : '#6b7280'};
   cursor: pointer;
   padding: 8px 16px;
   border-radius: 20px;
-  font-weight: ${props => props.active ? '500' : '400'};
+  font-weight: ${props => props.$active ? '500' : '400'};
   transition: all 0.2s ease;
-  box-shadow: ${props => props.active ? '0 1px 3px rgba(0, 0, 0, 0.1)' : 'none'};
+  box-shadow: ${props => props.$active ? '0 1px 3px rgba(0, 0, 0, 0.1)' : 'none'};
 
   &:hover {
     color: #1f2937;
@@ -81,7 +81,7 @@ const RankingItem = styled.div`
   align-items: center;
   padding: 16px;
   border-radius: 30px;
-  border: 1px solid #D9D9D9; 
+  border: 1px solid #D9D9D9;
   background: #fff;
   transition: all 0.2s ease;
   cursor: pointer;
@@ -141,14 +141,14 @@ function RankingSection({ activeTab, setActiveTab, rankingData }) {
             AI RANKING🔥
           </SectionTitle>
           <RankingTabs>
-            <RankingTab 
-              active={activeTab === 'view'} 
+            <RankingTab
+              $active={activeTab === 'view'}
               onClick={() => setActiveTab('view')}
             >
               view
             </RankingTab>
-            <RankingTab 
-              active={activeTab === 'star'} 
+            <RankingTab
+              $active={activeTab === 'star'}
               onClick={() => setActiveTab('star')}
             >
               star
@@ -156,11 +156,13 @@ function RankingSection({ activeTab, setActiveTab, rankingData }) {
           </RankingTabs>
         </RankingLeftSection>
       </RankingHeader>
-
+      
       <RankingList>
         {rankingData.map((item, index) => (
           <RankingItemContainer key={index}>
-            <RankNumber rank={item.rank}>{item.rank}</RankNumber>
+            <RankNumber rank={item.rank}>
+              {item.rank}
+            </RankNumber>
             <RankingItem>
               <ItemLogo>⬡</ItemLogo>
               <ItemContent>
