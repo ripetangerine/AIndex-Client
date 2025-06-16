@@ -11,7 +11,7 @@ const FixingSectionWrapper = styled.div`
   gap: 10px;
 `;
 
-const FixedButton = styled.button` /* <button> 태그를 유지하고 window.open 사용 */
+const FixedButton = styled.button` 
   width: 220px;
   height: 50px;
   background: #EBE1FC;
