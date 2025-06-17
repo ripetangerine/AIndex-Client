@@ -262,7 +262,7 @@ function Search() {
     const newQuery = searchParams.get('query') || '';
     setSearchQuery(newQuery);
     
-    // 검색 시뮬레이션 (로딩 효과)
+    // 검색 로딩 효과
     if (newQuery) {
       setIsLoading(true);
       const timer = setTimeout(() => {

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Nav from '../components/Nav';
 import GlobalStyle from '../styles/Globalstyle';
 
-// Import the new components
 import SearchSectionComponent from '../components/SearchSection';
 import SuggestionSectionComponent from '../components/SuggestionSection';
 import RankingSectionComponent from '../components/RankingSection';
