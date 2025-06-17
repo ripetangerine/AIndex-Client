@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import StarsButtonIcon from './icon/StarsButtonIcon'; // Adjust path if needed
+import StarsButtonIcon from './icon/StarsButtonIcon';
 
 const SuggestionSectionWrapper = styled.div`
   margin-top: 40px;
