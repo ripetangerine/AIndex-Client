@@ -185,6 +185,9 @@ const UploadIcon = () => (
   </svg>
 );
 
+//////////////////////
+
+
 function AddAI() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -248,13 +251,37 @@ function AddAI() {
            uploadedFile;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (isFormValid()) {
-      console.log('Form submitted:', { ...formData, file: uploadedFile });
-      alert('AI 등록이 완료되었습니다!');
-      navigate('/');
+      const form = new FormData();
+      form.append('file', uploadedFile);
+      form.append('name', formData.name);
+      form.append('company', formData.company);
+      form.append('url', formData.url);
+      form.append('category', formData.category);
+      form.append('languages', formData.languages);
+      form.append('promptExample', formData.promptExample);
+      form.append('explanation', formData.explanation);
+  
+      try {
+        const response = await fetch('http://localhost:3000/ai/add', {
+          method: 'POST',
+          body: form
+        });
+  
+        if (response.ok) {
+          alert('AI 등록이 완료되었습니다!');
+          navigate('/');
+        } else {
+          alert('서버 오류: 등록 실패');
+        }
+      } catch (error) {
+        console.error('에러 발생:', error);
+        alert('통신 실패');
+      }
     }
   };
+  
 
   const handleCancel = () => {
     setFormData({
